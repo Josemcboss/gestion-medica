@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión Médica</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>GestiónMédica</h2>
+            </div>
+            <ul class="menu">
+                <li><a href="#" class="active" onclick="mostrarSeccion('dashboard')"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#" onclick="mostrarSeccion('pacientes')"><i class="fas fa-user"></i> Pacientes</a></li>
+                <li><a href="#" onclick="mostrarSeccion('citas')"><i class="fas fa-calendar"></i> Citas</a></li>
+                <li><a href="#" onclick="mostrarSeccion('doctores')"><i class="fas fa-user-md"></i> Doctores</a></li>
+                <li><a href="#" onclick="mostrarSeccion('historiales')"><i class="fas fa-file-medical"></i> Historiales</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <header>
+                <div class="header-content">
+                    <h1>Panel de Control</h1>
+                    <div class="user-info">
+                        <span>Dr. Usuario</span>
+                        <img src="https://via.placeholder.com/40" alt="Usuario" class="avatar">
+                    </div>
+                </div>
+            </header>
+
+            <div id="dashboard" class="seccion">
+                <div class="dashboard-cards">
+                    <div class="card">
+                        <h3>Total Pacientes</h3>
+                        <p class="numero">150</p>
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="card">
+                        <h3>Citas Hoy</h3>
+                        <p class="numero">12</p>
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="card">
+                        <h3>Doctores</h3>
+                        <p class="numero">8</p>
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div id="pacientes" class="seccion" style="display: none;">
+                <div class="acciones">
+                    <button onclick="mostrarFormularioPaciente()" class="btn-primary">
+                        <i class="fas fa-plus"></i> Nuevo Paciente
+                    </button>
+                    <input type="search" placeholder="Buscar paciente..." class="busqueda">
+                </div>
+                <table class="tabla-datos">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Teléfono</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-pacientes">
+                        <!-- Los pacientes se cargarán dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="citas" class="seccion" style="display: none;">
+                <div class="acciones">
+                    <button onclick="mostrarFormularioCita()" class="btn-primary">
+                        <i class="fas fa-plus"></i> Nueva Cita
+                    </button>
+                </div>
+                <div id="calendario">
+                    <!-- El calendario se cargará dinámicamente -->
+                </div>
+            </div>
+
+            <div id="doctores" class="seccion" style="display: none;">
+                <div class="acciones">
+                    <button onclick="mostrarFormularioDoctor()" class="btn-primary">
+                        <i class="fas fa-plus"></i> Nuevo Doctor
+                    </button>
+                </div>
+                <div class="doctores-grid" id="lista-doctores">
+                    <!-- Los doctores se cargarán dinámicamente -->
+                </div>
+            </div>
+
+            <div id="historiales" class="seccion" style="display: none;">
+                <div class="acciones">
+                    <input type="search" placeholder="Buscar historial..." class="busqueda">
+                </div>
+                <div class="historiales-lista" id="lista-historiales">
+                    <!-- Los historiales se cargarán dinámicamente -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para formularios -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-contenido"></div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
